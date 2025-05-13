@@ -42,8 +42,8 @@ export class AppComponent implements OnInit {
         private themeService: ThemeService,
         private router: Router,
     ) {
-        // Amplify.configure(outputs);
-        // this.loadTheme();
+        Amplify.configure(outputs);
+        this.loadTheme();
     }
 
     ngOnInit() {
@@ -57,18 +57,18 @@ export class AppComponent implements OnInit {
 
     }
 
-    //
+    
 
-    // toggleTheme(): void {
-    //     const newTheme = this.themeService.getTheme() === 'dark' ? 'light' : 'dark';
-    //     this.themeService.setTheme(newTheme);
-    // }
+    toggleTheme(): void {
+        const newTheme = this.themeService.getTheme() === 'dark' ? 'light' : 'dark';
+        this.themeService.setTheme(newTheme);
+    }
 
-    // loadTheme(): void {
-    //     this.themeService.setTheme(this.themeService.getTheme());
-    // }
+    loadTheme(): void {
+        this.themeService.setTheme(this.themeService.getTheme());
+    }
 
-    //
+    
 
     async logAuthSession() {
         try {
