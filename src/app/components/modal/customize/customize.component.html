@@ -1,0 +1,20 @@
+<h1 mat-dialog-title style="text-align: center; --mdc-dialog-subhead-size: 30px">
+    Customize {{ data.chartType }} Chart
+</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <mat-label>Chart Title</mat-label>
+        <input matInput formControlName="title" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Chart Data</mat-label>
+        <textarea matInput formControlName="data" rows="5"></textarea>
+        <mat-hint>Enter JSON data for the chart</mat-hint>
+    </mat-form-field>
+
+    <div class="actions">
+        <button mat-button (click)="close()">Cancel</button>
+        <button mat-raised-button color="primary" type="submit">Save</button>
+    </div>
+</form>

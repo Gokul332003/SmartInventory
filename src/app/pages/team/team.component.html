@@ -1,0 +1,79 @@
+<div class="teamHolder">
+    <app-grid
+        [rowData]="rowData"
+        [columnDefs]="colDefs"
+        [addButton]="addButton"
+        (addNewClicked)="openAddMemberPopup()"
+        (nameCellValueChanged)="onNameCellValueChanged($event)"
+        (rowsToDelete)="deleteMember()"
+        [context]="getContext()"
+        #gridComponent
+    >
+    </app-grid>
+</div>
+
+<div *ngIf="showPopup" class="popup-overlay">
+    <div class="custom-dialog">
+        <div class="popup-content">
+            <h1 mat-dialog-title style="text-align: center; font-size: 30px">Add Member</h1>
+            <form (ngSubmit)="onSubmit(userForm.value)" #userForm="ngForm">
+                <!-- Name Input -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" id="name" name="name" [(ngModel)]="user.name" required />
+                </mat-form-field>
+
+                <!-- Surname Input -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Surname</mat-label>
+                    <input matInput type="text" id="surname" name="surname" [(ngModel)]="user.surname" required />
+                </mat-form-field>
+
+                <!-- Email Input -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input
+                        matInput
+                        type="email"
+                        id="email"
+                        name="email"
+                        [(ngModel)]="user.email"
+                        required
+                        #userEmail="ngModel"
+                    />
+                    <mat-error *ngIf="userEmail.invalid && (userEmail.dirty || userEmail.touched)">
+                        <span *ngIf="userEmail.errors?.['required']">Email is required.</span>
+                        <span *ngIf="userEmail.errors?.['email']">Please enter a valid email address.</span>
+                    </mat-error>
+                </mat-form-field>
+
+                <!-- Role Selection -->
+                <mat-form-field appearance="outline">
+                    <mat-label>Role</mat-label>
+                    <mat-select id="role" name="role" [(ngModel)]="user.role" required>
+                        <mat-option value="">Select a role</mat-option>
+                        <mat-option value="admin">Admin</mat-option>
+                        <mat-option value="enduser">End User</mat-option>
+                        <mat-option value="inventorycontroller">Inventory Controller</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <!-- Buttons -->
+                <div class="button-group">
+                    <button mat-flat-button (click)="closePopup()" class="btn" [disabled]="isAddingMember">Cancel</button>
+                    <button mat-flat-button color="primary" type="submit" class="btn" [disabled]="!userForm.form.valid || isAddingMember">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Add Member Popup Loader -->
+        <div *ngIf="isAddingMember" class="popup-loader">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="isLoading" class="loading-overlay">
+    <app-loading-spinner></app-loading-spinner>
+</div>

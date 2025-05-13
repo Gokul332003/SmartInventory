@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    height: 100vh;
+    /* Ensures the container takes full viewport height */
+    width: 100%;
+    /* Ensures the container takes full width */
+    overflow: hidden;
+}
+
+.app-sidebar {
+    height: 100vh;
+    /* Sidebar takes full viewport height */
+    position: fixed;
+    /* Makes sidebar stay in place */
+    width: 200px;
+    /* Adjust the width as necessary */
+    z-index: 1000;
+    /* Ensures sidebar is above other content */
+    height: 100vh;
+    /* Sidebar takes full viewport height */
+    position: fixed;
+    /* Makes sidebar stay in place */
+    width: 200px;
+    /* Adjust the width as necessary */
+    z-index: 1000;
+    /* Ensures sidebar is above other content */
+}
+
+.app-header {
+    margin-left: 200px;
+    /* Pushes the header to the right of the sidebar */
+    width: calc(100% - 200px);
+    /* Adjusts the width to take the remaining space */
+    position: fixed;
+    /* Keeps the header at the top */
+    z-index: 1100;
+    /* Ensures header is above the sidebar for any overlapping content */
+    top: 0;
+}
+
+.content {
+    /* margin-left: 200px; */
+    margin-top: 0px;
+    width: 100%;
+    height: calc(100vh - 64px);
+    /* overflow-y: auto; */
+}
+
+.container {
+    background-color: #f5f7fa;
+    color: var(--text-color);
+}
+
+.app-sidebar {
+    background-color: var(--sidebar-bg-color);
+}
+
+.app-header {
+    background-color: #f1f1f1;
+}
+
+::ng-deep .ag-tooltip {
+    background-color: #f8f8f8 !important; /* Light gray background */
+    color: #333 !important; /* Dark text for contrast */
+    opacity: 1 !important; /* Fully opaque */
+    border: 1px solid #c8c8c8 !important; /* Light border */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; /* Subtle shadow */
+    padding: 5px 10px !important; /* Comfortable padding */
+    font-size: 12px !important; /* Readable font size */
+    z-index: 10000 !important; /* Ensure it's above other elements */
+}
+
+.logo-small {
+    width: 100px;
+    height: auto;
+  }

@@ -1,0 +1,243 @@
+{
+  "api": {
+    "apismart": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "smartinventorymain7f9c4641"
+        },
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "supplierdbTrigger4ab7d306"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    },
+    "inventoryapi": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "getinventory"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "auth": {
+    "smartinventorymain020ff77d": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyCharacters": [],
+          "passwordPolicyMinLength": 8
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito"
+    }
+  },
+  "function": {
+    "createinventory": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "getinventory": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "smartdynamoTriggerb76811fd": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "smartdynamo"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "smartinventorymain7f9c4641": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "smartdynamo"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "supplierdbTrigger4ab7d306": {
+      "build": true,
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ],
+          "category": "storage",
+          "resourceName": "supplierdb"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "userActivityCreateItem": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_createinventory_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createinventory"
+        }
+      ]
+    },
+    "AMPLIFY_function_createinventory_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "createinventory"
+        }
+      ]
+    },
+    "AMPLIFY_function_getinventory_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getinventory"
+        }
+      ]
+    },
+    "AMPLIFY_function_getinventory_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "getinventory"
+        }
+      ]
+    },
+    "AMPLIFY_function_smartdynamoTriggerb76811fd_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "smartdynamoTriggerb76811fd"
+        }
+      ]
+    },
+    "AMPLIFY_function_smartdynamoTriggerb76811fd_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "smartdynamoTriggerb76811fd"
+        }
+      ]
+    },
+    "AMPLIFY_function_smartinventorymain7f9c4641_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "smartinventorymain7f9c4641"
+        }
+      ]
+    },
+    "AMPLIFY_function_smartinventorymain7f9c4641_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "smartinventorymain7f9c4641"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplierdbTrigger4ab7d306_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplierdbTrigger4ab7d306"
+        }
+      ]
+    },
+    "AMPLIFY_function_supplierdbTrigger4ab7d306_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "supplierdbTrigger4ab7d306"
+        }
+      ]
+    },
+    "AMPLIFY_function_userActivityCreateItem_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "userActivityCreateItem"
+        }
+      ]
+    },
+    "AMPLIFY_function_userActivityCreateItem_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "userActivityCreateItem"
+        }
+      ]
+    }
+  },
+  "storage": {
+    "smartdyanamo": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "smartdynamo": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    },
+    "supplierdb": {
+      "providerPlugin": "awscloudformation",
+      "service": "DynamoDB"
+    }
+  }
+}

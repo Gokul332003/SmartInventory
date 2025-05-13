@@ -1,0 +1,27 @@
+{
+  "resourceName": "supplierdb",
+  "tableName": "suppliers",
+  "partitionKey": {
+    "fieldName": "supplierID",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "tententid",
+      "partitionKey": {
+        "fieldName": "supplierID",
+        "fieldType": "string"
+      }
+    },
+    {
+      "name": "company_name",
+      "partitionKey": {
+        "fieldName": "supplierID",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": [
+    "supplierdbTrigger4ab7d306"
+  ]
+}

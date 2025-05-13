@@ -1,0 +1,24 @@
+{
+  "resourceName": "smartdynamo",
+  "tableName": "inventory",
+  "partitionKey": {
+    "fieldName": "inventoryID",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "tenantId",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "tenentId",
+      "partitionKey": {
+        "fieldName": "tenantId",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": [
+    "smartdynamoTriggerb76811fd"
+  ]
+}

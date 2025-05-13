@@ -1,0 +1,212 @@
+<div class="supplierHolder">
+    <app-grid
+        [rowData]="rowData"
+        [columnDefs]="colDefs"
+        [addButton]="addButton"
+        (addNewClicked)="openAddSupplierPopup()"
+        (itemToUpdate)="handleCellValueChanged($event)"
+        (rowsToDelete)="handleRowsToDelete($event)"
+        (importExcelClicked)="openImportSuppliersModal()"
+        #gridComponent
+    >
+    </app-grid>
+</div>
+
+<!-- Add Supplier Popup -->
+<div *ngIf="showAddPopup" class="popup-overlay">
+    <div class="content">
+        
+        <h1 mat-dialog-title style="text-align: center; font-size: 30px; padding: 10px">Add Supplier</h1>
+        <mat-dialog-content>
+            <form [formGroup]="supplierForm" class="supplier-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Company Name</mat-label>
+                    <input matInput formControlName="company_name" required />
+                    <mat-error *ngIf="supplierForm.get('company_name')?.hasError('required')">
+                        Company name is required
+                    </mat-error>
+                    <mat-error *ngIf="supplierForm.get('company_name')?.hasError('minlength')">
+                        Company name must be at least 2 characters long
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contact Name</mat-label>
+                    <input matInput formControlName="contact_name" required />
+                    <mat-error *ngIf="supplierForm.get('contact_name')?.hasError('required')">
+                        Contact name is required
+                    </mat-error>
+                    <mat-error *ngIf="supplierForm.get('contact_name')?.hasError('pattern')">
+                        Please enter a valid name (letters, spaces, and hyphens only)
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Contact Email</mat-label>
+                    <input matInput formControlName="contact_email" required />
+                    <mat-error *ngIf="supplierForm.get('contact_email')?.hasError('required')">
+                        Contact email is required
+                    </mat-error>
+                    <mat-error *ngIf="supplierForm.get('contact_email')?.hasError('email')">
+                        Please enter a valid email address
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput formControlName="phone_number" required />
+                    <mat-error *ngIf="supplierForm.get('phone_number')?.hasError('required')">
+                        Phone number is required
+                    </mat-error>
+                    <mat-error *ngIf="supplierForm.get('phone_number')?.hasError('pattern')">
+                        Please enter a valid phone number (e.g., +1-123-456-7890)
+                    </mat-error>
+                </mat-form-field>
+
+                <div formGroupName="address">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Street</mat-label>
+                        <input matInput formControlName="street" required />
+                        <mat-error *ngIf="supplierForm.get('address.street')?.hasError('required')">
+                            Street is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>City</mat-label>
+                        <input matInput formControlName="city" required />
+                        <mat-error *ngIf="supplierForm.get('address.city')?.hasError('required')">
+                            City is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>State/Province</mat-label>
+                        <input matInput formControlName="state_province" required />
+                        <mat-error *ngIf="supplierForm.get('address.state_province')?.hasError('required')">
+                            State/Province is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Postal Code</mat-label>
+                        <input matInput formControlName="postal_code" required />
+                        <mat-error *ngIf="supplierForm.get('address.postal_code')?.hasError('required')">
+                            Postal code is required
+                        </mat-error>
+                        <mat-error *ngIf="supplierForm.get('address.postal_code')?.hasError('pattern')">
+                            Please enter a valid postal code
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                        <mat-label>Country</mat-label>
+                        <input matInput formControlName="country" required />
+                        <mat-error *ngIf="supplierForm.get('address.country')?.hasError('required')">
+                            Country is required
+                        </mat-error>
+                        <mat-error *ngIf="supplierForm.get('address.country')?.hasError('required')">
+                            Country is required
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+            </form>
+        </mat-dialog-content>
+        <mat-dialog-actions style="display: flex; padding: 25px">
+            <button mat-flat-button type="button" (click)="closeAddPopup()" class="btn">Cancel</button>
+            <button mat-flat-button color="primary" type="submit" [disabled]="!supplierForm.valid" (click)="onSubmit()" class="btn">
+                Submit
+            </button>
+        </mat-dialog-actions>
+       
+
+        <!-- Add Supplier Popup Loader -->
+        <div *ngIf="isAddingSupplier" class="popup-loader">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Popup -->
+<div *ngIf="showDeletePopup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>Confirm Deletion</h2>
+        <p>Are you sure you want to delete the selected supplier(s)?</p>
+        <div class="button-group">
+            <button mat-flat-button class="btn2" (click)="cancelDelete()">No</button>
+            <button mat-flat-button class="btn2" (click)="confirmDelete()">Yes</button>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Address Popup -->
+<div *ngIf="showEditAddressPopup" class="popup-overlay">
+    <div class="content">
+        <h1 mat-dialog-title style="text-align: center; font-size: 30px; padding: 10px">Edit Supplier Address</h1>
+        <mat-dialog-content>
+            <form [formGroup]="editAddressForm" (ngSubmit)="onEditAddressSubmit()" class="supplier-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>Street</mat-label>
+                    <input matInput formControlName="street" required />
+                    <mat-error *ngIf="editAddressForm.get('street')?.hasError('required')">
+                        Street is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city" required />
+                    <mat-error *ngIf="editAddressForm.get('city')?.hasError('required')"> City is required </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>State/Province</mat-label>
+                    <input matInput formControlName="state_province" required />
+                    <mat-error *ngIf="editAddressForm.get('state_province')?.hasError('required')">
+                        State/Province is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput formControlName="postal_code" required />
+                    <mat-error *ngIf="editAddressForm.get('postal_code')?.hasError('required')">
+                        Postal code is required
+                    </mat-error>
+                    <mat-error *ngIf="editAddressForm.get('postal_code')?.hasError('pattern')">
+                        Please enter a valid postal code
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Country</mat-label>
+                    <input matInput formControlName="country" required />
+                    <mat-error *ngIf="editAddressForm.get('country')?.hasError('required')">
+                        Country is required
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </mat-dialog-content>
+        <mat-dialog-actions align="end" style="display: flex; padding: 25px">
+            <button mat-flat-button class="btn" type="button" (click)="closeEditAddressPopup()">Cancel</button>
+            <button
+                mat-flat-button
+                class="btn"
+                type="submit"
+                [disabled]="!editAddressForm.valid"
+                (click)="onEditAddressSubmit()"
+            >
+                Submit
+            </button>
+        </mat-dialog-actions>
+
+        <div *ngIf="isEditingAddress" class="popup-loader">
+            <app-loading-spinner></app-loading-spinner>
+        </div>
+    </div>
+</div>
+
+<!-- Main Page Loader -->
+<div *ngIf="isLoading" class="loading-overlay">
+    <app-loading-spinner></app-loading-spinner>
+</div>

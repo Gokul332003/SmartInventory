@@ -1,0 +1,40 @@
+<gridster [options]="options" style="background: transparent !important">
+    <gridster-item [item]="item" *ngFor="let item of dashboard" [ngClass]="{ 'act-report': item.type === 'grid' }">
+        <ng-container [ngSwitch]="item.type">
+            <ng-container *ngSwitchCase="'metric'">
+                <mat-card>
+                    <mat-card-content>
+                        <div class="metric-container">
+                            <div class="icon-container">
+                                <mat-icon style="font-size: 48px; width: 48px; height: 48px">{{
+                                    item['data']?.icon
+                                }}</mat-icon>
+                            </div>
+                            <div class="text-container">
+                                <span class="metric-name">{{ item['data']?.name }}</span>
+                                <h2 class="metric-value">{{ item['data']?.value }}</h2>
+                                <div class="metric-trend">
+                                    <!-- <mat-icon [ngClass]="item['data']?.trend">
+                                        {{ item['data']?.trend === 'up' ? 'trending_up' : item['data']?.trend === 'down'
+                                        ? 'trending_down' : 'trending_flat' }}
+                                    </mat-icon> -->
+                                    <!-- {{ item['data']?.percentage }}%y -->
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </ng-container>
+            <ng-container *ngSwitchCase="'grid'">
+                <app-grid [rowData]="rowData" [columnDefs]="colDefs" #gridComponent></app-grid>
+            </ng-container>
+        </ng-container>
+    </gridster-item>
+    <div class="back-toolbar">
+        <button mat-flat-button class="btn" (click)="back()"><mat-icon>arrow_back</mat-icon> Back To Reports</button>
+    </div>
+</gridster>
+
+<div *ngIf="isLoading" class="loading-overlay">
+    <app-loading-spinner></app-loading-spinner>
+</div>

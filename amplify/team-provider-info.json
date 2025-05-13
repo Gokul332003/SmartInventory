@@ -1,0 +1,57 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-smartinventorymain-dev-4b800-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533267442324:role/amplify-smartinventorymain-dev-4b800-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533267442324:role/amplify-smartinventorymain-dev-4b800-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+      "UnauthRoleName": "amplify-smartinventorymain-dev-4b800-unauthRole",
+      "StackName": "amplify-smartinventorymain-dev-4b800",
+      "StackId": "arn:aws:cloudformation:us-east-1:533267442324:stack/amplify-smartinventorymain-dev-4b800/a13d5900-16fb-11f0-8180-126a80d0dc0b",
+      "AmplifyAppId": "dlcpj9un91bmi"
+    },
+    "categories": {
+      "function": {
+        "smartinventorymain7f9c4641": {
+          "deploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+          "s3Key": "amplify-builds/smartinventorymain7f9c4641-2f4136614b666146434c-build.zip"
+        },
+        "userActivityCreateItem": {
+          "deploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+          "s3Key": "amplify-builds/userActivityCreateItem-3369326d324d73306e2b-build.zip"
+        },
+        "smartdynamoTriggerb76811fd": {
+          "deploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+          "s3Key": "amplify-builds/smartdynamoTriggerb76811fd-65647354386274616d72-build.zip"
+        },
+        "supplierdbTrigger4ab7d306": {
+          "deploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+          "s3Key": "amplify-builds/supplierdbTrigger4ab7d306-6177504e32522f7a785a-build.zip"
+        },
+        "getinventory": {
+          "deploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+          "s3Key": "amplify-builds/getinventory-62775958684d574b634f-build.zip"
+        },
+        "createinventory": {
+          "deploymentBucketName": "amplify-smartinventorymain-dev-4b800-deployment",
+          "s3Key": "amplify-builds/createinventory-52427833414653747853-build.zip"
+        },
+        "smartinventorymain8e9e3c1a": {},
+        "getUsersV2": {}
+      },
+      "api": {
+        "apismart": {},
+        "inventoryapi": {}
+      },
+      "auth": {
+        "smartinventorymain020ff77d": {}
+      },
+      "storage": {
+        "smartdynamo": {},
+        "smartdyanamo": {},
+        "supplierdb": {}
+      }
+    }
+  }
+}

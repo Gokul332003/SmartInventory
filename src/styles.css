@@ -1,0 +1,268 @@
+/* main.css */
+
+/* width */
+::-webkit-scrollbar {
+    margin-left: 5px;
+    width: 10px;
+    border-radius: 50px;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #333333;
+        --text-color: #ffffff;
+        --primary-color: #7986cb;
+        --card-background: #424242;
+    }
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 50px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+* {
+    margin: 0;
+}
+
+[data-amplify-authenticator] {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40%;
+    max-width: 500px;
+}
+
+/* Large desktop screens */
+@media screen and (min-width: 1200px) {
+    [data-amplify-authenticator] {
+        max-width: 550px;
+    }
+}
+
+/* Desktop and large tablets */
+@media screen and (max-width: 1199px) and (min-width: 992px) {
+    [data-amplify-authenticator] {
+        max-width: 500px;
+    }
+}
+
+/* Tablets and small desktops */
+@media screen and (max-width: 991px) and (min-width: 768px) {
+    [data-amplify-authenticator] {
+        width: 80%;
+        max-width: 450px;
+    }
+}
+
+/* Large phones and small tablets */
+@media screen and (max-width: 767px) and (min-width: 576px) {
+    [data-amplify-authenticator] {
+        width: 90%;
+        max-width: none;
+    }
+}
+
+/* Phones */
+@media screen and (max-width: 575px) {
+    [data-amplify-authenticator] {
+        width: 100%;
+        top: 0;
+        left: 0;
+        transform: none;
+        height: 100vh;
+    }
+
+    [data-amplify-authenticator] [data-amplify-router] {
+        height: 100%;
+    }
+}
+
+/* Adjustments for form elements */
+@media screen and (max-width: 575px) {
+    [data-amplify-authenticator] {
+        --amplify-components-authenticator-form-padding: var(--amplify-space-medium) var(--amplify-space-medium)
+            var(--amplify-space-large);
+    }
+
+    /* Ensure password input and visibility button are aligned */
+    [data-amplify-authenticator] .amplify-passwordfield {
+        display: flex;
+    }
+
+    [data-amplify-authenticator] .amplify-passwordfield__inner {
+        flex-grow: 1;
+    }
+
+    [data-amplify-authenticator] .amplify-passwordfield__visibility-button {
+        height: 100%;
+        padding: 0 10px;
+    }
+}
+
+/* Improve touch targets for mobile */
+@media screen and (max-width: 767px) {
+    [data-amplify-authenticator] .amplify-button {
+        min-height: 44px;
+    }
+
+    [data-amplify-authenticator] .amplify-input {
+        min-height: 44px;
+    }
+
+    [data-amplify-authenticator] .amplify-checkbox__button {
+        min-width: 24px;
+        min-height: 24px;
+    }
+}
+
+/* Improve readability on smaller screens */
+@media screen and (max-width: 575px) {
+    [data-amplify-authenticator] {
+        font-size: 16px;
+    }
+}
+
+/* Adjust layout for very small screens */
+@media screen and (max-width: 320px) {
+    [data-amplify-authenticator] {
+        font-size: 14px;
+    }
+
+    [data-amplify-authenticator] .amplify-button {
+        padding: 8px 12px;
+    }
+}
+
+/* High pixel density screens */
+@media screen and (min-resolution: 192dpi), screen and (min-resolution: 2dppx) {
+    [data-amplify-authenticator] {
+        font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media screen and (max-height: 575px) and (orientation: landscape) {
+    [data-amplify-authenticator] {
+        height: auto;
+        min-height: 100vh;
+        position: relative;
+        transform: none;
+        top: 0;
+        left: 0;
+    }
+}
+
+/* body, html {
+  width: 100%; 
+  margin: 0; 
+  padding: 0; 
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+*/
+[data-amplify-authenticator] {
+    --amplify-components-authenticator-router-box-shadow: 0 0 2px var(--amplify-colors-overlay-90);
+    --amplify-components-authenticator-router-border-width: 0;
+    --amplify-components-authenticator-form-padding: var(--amplify-space-medium) var(--amplify-space-xl)
+        var(--amplify-space-xl);
+    --amplify-components-button-primary-background-color: var(--amplify-colors-neutral-100);
+    --amplify-components-fieldcontrol-focus-box-shadow: 0 0 0 2px var(--amplify-colors-purple-60);
+    --amplify-components-tabs-item-active-border-color: var(--amplify-colors-neutral-100);
+    --amplify-components-tabs-item-color: var(--amplify-colors-overlay-90);
+    --amplify-components-tabs-item-active-color: var(--amplify-colors-overlay-90);
+    --amplify-components-button-link-color: var(--amplify-colors-overlay-90);
+    --amplify-components-button-link-hover-color: var(--amplify-colors-overlay-90);
+}
+.amplify-button--primary {
+    background: #005cbb;
+    color: #fff;
+}
+
+body,
+html {
+    width: 100%; /* Ensure the body takes full width */
+    margin: 0; /* Reset default margin */
+    padding: 0; /* Reset default padding */
+    /* overflow-y: scroll; */
+}
+
+/* // styles.scss */
+.mat-form-field-type-mat-select .mat-form-field-label {
+    color: var(--text-color) !important;
+}
+
+/* Define the base colors */
+:root {
+    --background-color: #ffffff; /* Light mode background */
+    --text-color: #000000; /* Light mode text */
+    --text-color-hover: rgb(27, 27, 215);
+    --sidebar-bg-color: #f1f1f1; /* Light mode sidebar background */
+    --sidebar-hover-bg-color: #d6d6d6;
+    --sidebar-text-color: #000000;
+    --card-bg-color: #ffffff; /* Light mode card background */
+    --card-text-color: #000000; /* Light mode card text color */
+    --header-bg-color: #eeeeee;
+    --profile-pic: #ffff;
+    --header-profile-text: #000000;
+    --svg-stroke-color: #000000;
+    --dash-cards-text-color: #000000;
+    --dash-cards-bg-color: #ffffff;
+    --dash-bg-color: #ffffff;
+    --tab-active-color: #151414;
+    --tab-inactive-color: rgba(0, 0, 0, 0.6);
+    --tab-indicator-color: #242022;
+    --tab-hover-color: black;
+    --tab-ripple-color: #232222;
+    --button-bg-color: #f2f2f2; /* Light mode background color for buttons */
+    --button-text-color: black; /* Light mode text color for buttons */
+    --button-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow for light mode */
+    --help-accordion-bg-color: #fdfbff;
+    --help-accordion-text-color: black;
+    --user-guides-bg-color: white;
+    --report-bg-color: #0a93f6;
+}
+
+[data-theme='dark'] {
+    --background-color: #000000; /* Dark mode background */
+    --text-color: #ffffff; /* Dark mode text */
+    --text-color-hover: rgb(74, 64, 186);
+    --header-bg-color: #1e1e1e; /* Dark mode header background */
+    --sidebar-bg-color: #1e1e1e; /* Dark mode sidebar background */
+    --sidebar-text-color: #fff;
+    --sidebar-hover-bg-color: #ffffff1e;
+    --card-bg-color: #424242; /* Dark mode card background */
+    --card-text-color: #ffffff; /* Dark mode card text color */
+    --profile-pic: #0000;
+    --header-profile-text: #ffff;
+    --svg-stroke-color: #ffff;
+    --dash-cards-text-color: #ffffff;
+    --dash-cards-bg-color: #1e1e1e;
+    --dash-bg-color: #000000;
+    --tab-active-color: #ffffff;
+    --tab-inactive-color: rgba(255, 255, 255, 0.6);
+    --tab-indicator-color: #f0f0f0;
+    --tab-hover-color: #ffffff;
+    --tab-ripple-color: rgba(255, 255, 255, 0.1);
+    --button-bg-color: #333; /* Dark mode background color for buttons */
+    --button-text-color: #fff; /* Dark mode text color for buttons */
+    --button-shadow: -2px 2px 8px rgb(255 255 255 / 39%); /* White shadow for dark mode */
+    --help-accordion-bg-color: #232323;
+    --help-accordion-text-color: white;
+    --user-guides-bg-color: #232323;
+    --user-guides-sidebar-bg-color: #1e1e1e;
+    --report-bg-color: #131313;
+}

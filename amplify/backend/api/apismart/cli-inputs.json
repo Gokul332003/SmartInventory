@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/items": {
+      "name": "/items",
+      "lambdaFunction": "smartinventorymain7f9c4641",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/addSupplier": {
+      "name": "/addSupplier",
+      "lambdaFunction": "supplierdbTrigger4ab7d306",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

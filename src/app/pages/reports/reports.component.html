@@ -1,0 +1,22 @@
+<div class="reports-container">
+    <div class="intro-section">
+      <h2>Your Reports Dashboard</h2>
+      <p>Access and analyze key data with our comprehensive reports</p>
+    </div>
+    <div class="reports-grid">
+      <div class="report-tile" *ngFor="let reportKey of reportOrder" (click)="viewFullReport(reportKey)">
+        <div class="report-content">
+          <div class="report-icon-wrapper">
+            <mat-icon class="report-icon">{{ reports[reportKey].icon }}</mat-icon>
+          </div>
+          <h3>{{ reports[reportKey].title }}</h3>
+          <p>{{ reports[reportKey].subtitle }}</p>
+          <div class="view-report">
+            <span>View Report</span>
+            <mat-icon>arrow_forward</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-spacer"></div>
+  </div>

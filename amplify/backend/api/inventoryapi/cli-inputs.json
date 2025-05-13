@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/getInventoryItem": {
+      "name": "/getInventoryItem",
+      "lambdaFunction": "getinventory",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

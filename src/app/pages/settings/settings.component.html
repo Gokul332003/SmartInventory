@@ -1,0 +1,95 @@
+<div class="settings-container">
+    <app-templates-quotes-side-pane [isOpen]="isTemplateSidePaneOpen" (closed)="isTemplateSidePaneOpen = false">
+    </app-templates-quotes-side-pane>
+    <div class="intro-section">
+        <h2>Customize Your Experience</h2>
+        <p>Tailor the app to your needs by adjusting these key settings</p>
+    </div>
+    <div class="tiles-grid">
+        <div class="tile" data-tooltip="Manage your personal information">
+            <div class="tile-content">
+                <div class="tile-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+                <h3>Personal Details</h3>
+                <div class="tile-inputs">
+                    <input type="text" placeholder="Name" [(ngModel)]="personalDetails.name" />
+                    <input type="text" placeholder="Surname" [(ngModel)]="personalDetails.surname" />
+                    <input type="email" placeholder="Email" [(ngModel)]="personalDetails.email" />
+                </div>
+            </div>
+            <div class="tile-button">
+                <button (click)="savePersonalDetails()">Save Changes</button>
+            </div>
+        </div>
+
+        <div class="tile" data-tooltip="Update your account password">
+            <div class="tile-content">
+                <div class="tile-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Password</h3>
+                <div class="tile-inputs">
+                    <input type="password" placeholder="Current Password" [(ngModel)]="passwordChange.current" />
+                    <input type="password" placeholder="New Password" [(ngModel)]="passwordChange.new" />
+                </div>
+            </div>
+            <div class="tile-button">
+                <button (click)="updatePassword()">Update Password</button>
+            </div>
+        </div>
+
+        <div class="tile" data-tooltip="Customize your email templates">
+            <div class="tile-content">
+                <div class="tile-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email Template</h3>
+                <p>Update and edit your template for emails sent.</p>
+            </div>
+            <div class="tile-button">
+                <button (click)="editEmailTemplate()">Edit Template</button>
+            </div>
+        </div>
+
+        <div class="tile" data-tooltip="Manage your automation templates">
+            <div class="tile-content">
+                <div class="tile-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>Automation Templates</h3>
+                <p>Add, remove and edit your templates for order automation.</p>
+            </div>
+            <div class="tile-button">
+                <button (click)="editAutomationTemplates()">Edit Templates</button>
+            </div>
+        </div>
+
+        <div class="tile" data-tooltip="Update your delivery preferences">
+            <div class="tile-content">
+                <div class="tile-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Delivery Information</h3>
+                <p>Update and change your delivery information.</p>
+            </div>
+            <div class="tile-button">
+                <button (click)="editDeliveryInfo()">Edit Details</button>
+            </div>
+        </div>
+
+        <div class="tile" data-tooltip="Configure automatic inventory scanning">
+            <div class="tile-content">
+                <div class="tile-icon">
+                    <i class="fas fa-barcode"></i>
+                </div>
+                <h3>Inventory Scanner</h3>
+                <p>Set up and manage automatic inventory scanning schedules.</p>
+            </div>
+            <div class="tile-button">
+                <button (click)="openAutomationSettings()">Configure</button>
+            </div>
+        </div>
+    </div>
+    <div class="scroll-spacer"></div>
+</div>

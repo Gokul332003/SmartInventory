@@ -1,0 +1,14 @@
+{
+  "resourceName": "smartdyanamo",
+  "tableName": "userActivity",
+  "partitionKey": {
+    "fieldName": "activityID",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "tenentId",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

@@ -1,0 +1,518 @@
+.loading-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.initial {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.5em;
+    color: #888;
+}
+
+.dashboard-container {
+    width: 101.5%;
+    height: calc(100vh - 64px);
+    position: relative;
+    /* Adjust based on your app's header height */
+}
+
+.dashboard-card {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.left-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    margin-right: 16px;
+    flex-shrink: 0;
+}
+
+mat-icon {
+    height: 30px;
+    width: 30px;
+}
+
+.icon-container mat-icon {
+    font-size: 30px;
+    color: #000000;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.card-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: #757575;
+    margin: 0 0 4px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #212121;
+    margin: 0;
+}
+
+.right-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 80px;
+    flex-shrink: 0;
+}
+
+.progress-ring {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.progress-ring::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.change-value {
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    z-index: 1;
+}
+
+.positive-change {
+    color: #4caf50;
+}
+
+.negative-change {
+    color: #f44336;
+}
+
+/* Responsive adjustments for smaller screens and zoom levels */
+@media (max-width: 768px), (min-width: 769px) and (max-width: 1200px) and (min-resolution: 1.25dppx) {
+    .dashboard-card {
+        padding: 12px;
+    }
+
+    .icon-container {
+        display: none;
+        /* Hide the icon */
+    }
+
+    .left-content {
+        flex: 1;
+    }
+
+    .info-container {
+        width: 100%;
+    }
+
+    .card-title {
+        font-size: 12px;
+    }
+
+    .card-value {
+        font-size: 20px;
+    }
+
+    .right-content {
+        width: 60px;
+    }
+
+    .progress-ring {
+        width: 50px;
+        height: 50px;
+    }
+
+    .change-value {
+        font-size: 12px;
+    }
+}
+
+/* Additional adjustments for very small screens */
+@media (max-width: 480px) {
+    .card-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .left-content {
+        margin-bottom: 8px;
+    }
+
+    .right-content {
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .split-container {
+        flex-direction: column;
+    }
+
+    .left-column,
+    .right-column {
+        width: 100%;
+    }
+
+    .divider {
+        margin: 12px 0;
+    }
+}
+
+/* Styles for the full-width card */
+.full-width-card {
+    padding: 0;
+    overflow: hidden;
+}
+
+.split-container {
+    display: flex;
+    height: 100%;
+}
+
+.left-column,
+.right-column {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.requests-section,
+.backorders-section {
+    flex: 1;
+}
+
+.left-column.req-back {
+    padding: 36px;
+}
+
+.divider {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 16px 0;
+}
+
+h3 {
+    font-size: 29px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #333;
+}
+
+p {
+    margin-bottom: 15px;
+    font-size: 17px;
+    color: #666;
+}
+
+/* Ensure the SalesChart component fits within the right column */
+app-saleschart {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.report-container {
+    font-family: Arial, sans-serif;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f0f4f8;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.chart {
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
+
+.bar-chart {
+    display: flex;
+    align-items: flex-end;
+    height: 200px;
+    padding-top: 20px;
+}
+
+.bar {
+    width: 60px;
+    background-color: #3b82f6;
+    margin-right: 20px;
+    transition: height 0.3s ease;
+}
+
+.bar:nth-child(2) {
+    height: 120px;
+}
+
+.bar:nth-child(3) {
+    height: 180px;
+}
+
+.bar:nth-child(4) {
+    height: 150px;
+}
+
+.icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+.dollar-icon {
+    top: -20px;
+    right: -20px;
+}
+
+.plant-icon {
+    bottom: -20px;
+    left: -20px;
+}
+
+.person {
+    position: absolute;
+    bottom: 0;
+    right: 20px;
+    width: 100px;
+    height: 200px;
+}
+
+.person-body {
+    width: 60px;
+    height: 100px;
+    background-color: #4f88df;
+    border-radius: 30px 30px 0 0;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+}
+
+.person-head {
+    width: 40px;
+    height: 40px;
+    background-color: #4f88df;
+    border-radius: 50%;
+    position: absolute;
+    top: 45px;
+    left: 30px;
+}
+
+.person-legs {
+    width: 20px;
+    height: 60px;
+    background-color: #3b82f6;
+    position: absolute;
+    bottom: 0;
+}
+
+.person-legs::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 60px;
+    background-color: #3b82f6;
+    left: 40px;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.floating-element {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: #3b82f6;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: float 3s infinite ease-in-out;
+}
+
+.floating-element:nth-child(1) {
+    top: 20px;
+    left: 20px;
+}
+
+.floating-element:nth-child(2) {
+    top: 60px;
+    right: 40px;
+}
+
+.floating-element:nth-child(3) {
+    bottom: 40px;
+    left: 50px;
+}
+
+.right-column {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+gridster-item {
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.1),
+        0 6px 20px rgba(0, 0, 0, 0.15);
+    margin-left: auto;
+    margin-right: auto;
+    background: transparent !important;
+    border-radius: 10px;
+}
+
+gridster {
+    position: relative;
+    box-sizing: border-box;
+    background: transparent !important;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+    -webkit-user-select: none;
+    user-select: none;
+    display: block;
+}
+
+.quick-actions {
+    position: absolute;
+    bottom: 5px;
+    left: 30px;
+    z-index: 1001;
+}
+
+.widget-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.delete-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.preview-container {
+    height: 150px;
+}
+.btnAdd {
+    border-radius: 20px;
+    border-radius: 5px;
+    width: 200px;
+    color: #000000;
+    background-color: white;
+    height: 40px;
+    border-color: #c4c6d0;
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btnAdd mat-icon {
+    position: absolute;
+    left: 170px;
+    top: 6px;
+}
+.QAButtons {
+    width: 200px;
+    background-color: white;
+    --mat-menu-container-color: #74777f;
+    --mat-menu-item-hover-state-layer-color: #f1f1f1;
+    border: #74777f;
+    color: #000000;
+}

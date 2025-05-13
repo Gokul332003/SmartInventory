@@ -1,0 +1,8 @@
+{
+    "/**": {
+      "target": "https://fqskicck0f.execute-api.us-east-1.amazonaws.com/default",
+      "secure": false,
+      "changeOrigin": true
+    }
+  }
+  
